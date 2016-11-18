@@ -1,0 +1,3 @@
+[run]
+source = cosmetics
+omit = cosmetics/test*
