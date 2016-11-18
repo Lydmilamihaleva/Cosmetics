@@ -1,6 +1,7 @@
 #
 
 .idea
+.cache
 
 ## File-based project format:
 *.iws
