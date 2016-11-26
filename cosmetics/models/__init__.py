@@ -83,8 +83,21 @@ def includeme(config):
         reify=True
     )
 
+    from pyramid.security import Everyone, Allow
+    from pyramid_sacrud import PYRAMID_SACRUD_HOME, PYRAMID_SACRUD_VIEW
+    acl = [
+        (Allow, Everyone, PYRAMID_SACRUD_HOME),
+        (Allow, Everyone, PYRAMID_SACRUD_VIEW),
+        (Allow, Everyone, 'test'),
+    ]
+
+    from ps_alchemy.resources import ListResource
+
+    my_ps_group = ListResource(Group)
+    my_ps_group.__acl__ = acl
+
     models = (
-        ('Test', [Group, User]),
+        ('Test', [my_ps_group, User]),
         ('Test1', [Category, Unit])
     )
 
